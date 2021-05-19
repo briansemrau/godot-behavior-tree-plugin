@@ -8,7 +8,7 @@ export(float) var wait_time = 1.0
 var _tick_time: float = 0.0
 
 
-func enter(_tick: Tick) -> void:
+func open(_tick: Tick) -> void:
 	_tick_time = wait_time
 
 
