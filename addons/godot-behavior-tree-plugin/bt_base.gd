@@ -1,11 +1,11 @@
 extends Node
+class_name BehaviorTreeNode, "root_icon.png"
 
 
-const Tick = preload("res://addons/godot-behavior-tree-plugin/tick.gd")
+const Tick = preload("tick.gd")
 
 
 func _execute(tick: Tick) -> int:
-	
 	_enter(tick)
 	
 	if not tick.blackboard.get('isOpen', tick.tree, self):
@@ -22,26 +22,22 @@ func _execute(tick: Tick) -> int:
 
 
 func _enter(tick: Tick) -> void:
-	
 	tick.enter_node(self) #debug call to be filled out in Tick object
 	enter(tick)
 
 
 func _open(tick: Tick) -> void:
-	
 	tick.open_node(self)
 	tick.blackboard.set('isOpen', true, tick.tree, self)
 	open(tick)
 
 
 func _tick(tick: Tick) -> int:
-	
 	tick.tick_node(self)
 	return tick(tick)
 
 
 func _close(tick: Tick) -> void:
-	
 	tick.close_node(self)
 	tick.blackboard.set('isOpen', false, tick.tree, self)
 	close(tick)

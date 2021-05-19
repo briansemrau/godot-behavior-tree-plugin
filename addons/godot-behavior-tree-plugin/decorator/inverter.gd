@@ -1,6 +1,6 @@
 tool
-extends "res://addons/godot-behavior-tree-plugin/decorator.gd"
-
+extends BehaviorDecorator
+class_name BehaviorInverter, "inverter_icon.png"
 
 # Decorator Node - Inverter returns OK on FAILED, FAILED on OK, does not change running responses
 func tick(tick: Tick) -> int:

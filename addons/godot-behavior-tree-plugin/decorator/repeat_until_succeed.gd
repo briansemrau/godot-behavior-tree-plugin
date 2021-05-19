@@ -1,11 +1,12 @@
 tool
-extends "res://addons/godot-behavior-tree-plugin/decorator.gd"
-
+extends BehaviorDecorator
+class_name BehaviorRepeatUntilSucceed, "repeat_success_icon.png"
 
 # Decorator Node - Repeats the same node until we get an OK response
 #   this node ignores running and failed responses, choosing to retick the node instead
+
+
 func tick(tick: Tick) -> int:
-	
 	# 0..1 children
 	for c in get_children():
 		

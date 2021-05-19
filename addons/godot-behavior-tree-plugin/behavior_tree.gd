@@ -1,8 +1,8 @@
 tool
 extends Node
+class_name BehaviorTree, "root_icon.png"
 
-
-const Tick := preload("res://addons/godot-behavior-tree-plugin/tick.gd")
+const Tick := preload("tick.gd")
 
 
 func _ready() -> void:

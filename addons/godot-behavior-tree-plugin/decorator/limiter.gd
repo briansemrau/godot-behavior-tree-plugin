@@ -1,9 +1,11 @@
 tool
-extends "res://addons/godot-behavior-tree-plugin/decorator.gd"
+extends BehaviorDecorator
+class_name BehaviorLimiter, "limiter_icon.png"
 
 
 export(int) var max_calls := 0
 var total_calls := 0
+
 
 # Decorator Node
 func tick(tick: Tick) -> int:

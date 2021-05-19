@@ -1,6 +1,6 @@
 tool
-extends "res://addons/godot-behavior-tree-plugin/decorator.gd"
-
+extends BehaviorDecorator
+class_name BehaviorFailer, "failer_icon.png"
 
 #Decorator node - Always returns FAILED if not running
 func tick(tick: Tick) -> int:
