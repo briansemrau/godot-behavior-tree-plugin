@@ -3,13 +3,12 @@ extends BehaviorDecorator
 class_name BehaviorWait, "wait_icon.png"
 
 
-export(float) var wait_time = 1.0
+# The time (in seconds) between each time the child is ticked.
+export(float) var wait_time: float = 1.0
+# Whether to wait before the first time the child is ticked when this node is opened.
+export(bool) var wait_before_first_tick: bool = true
 
 var _tick_time: float = 0.0
-
-
-func open(_tick: Tick) -> void:
-	_tick_time = wait_time
 
 
 func _process(delta: float):
@@ -24,6 +23,14 @@ func reset_wait():
 	_tick_time = wait_time
 
 
+func open(_tick: Tick) -> void:
+	if wait_before_first_tick:
+		_tick_time = wait_time
+	else:
+		_tick_time = 0.0
+	set_process(true)
+
+
 func tick(tick: Tick) -> int:
 	if not is_waiting():
 		# 0..1 children
@@ -34,3 +41,7 @@ func tick(tick: Tick) -> int:
 	
 	# Timer still ticking
 	return ERR_BUSY
+
+
+func close(_tick: Tick) -> void:
+	set_process(false)
