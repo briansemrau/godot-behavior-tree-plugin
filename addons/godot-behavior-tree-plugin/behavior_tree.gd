@@ -2,17 +2,16 @@ tool
 extends Node
 class_name BehaviorTree, "root_icon.png"
 
+
 const Tick := preload("tick.gd")
 
 
 func _ready() -> void:
-	
 	if not get_child_count() == 1:
 		push_error(str("BehaviorTree \"", name, "\" should have exactly one child."))
 
 
 func tick(actor, blackboard, debug = false) -> int:
-	
 	var tick := Tick.new()
 	tick.tree = self
 	tick.actor = actor
@@ -40,13 +39,11 @@ func tick(actor, blackboard, debug = false) -> int:
 
 
 func _notification(notification: int) -> void:
-	
 	if notification == NOTIFICATION_PARENTED or notification == NOTIFICATION_UNPARENTED:
 		update_configuration_warning()
 
 
 func _get_configuration_warning() -> String:
-	 
 	if not get_child_count() == 1:
 		return "A BehaviorTree should have exactly one child"
 	return ""

@@ -6,7 +6,6 @@ class_name BehaviorSelector, "selector_icon.png"
 
 
 func tick(tick: Tick) -> int:
-	
 	var result := OK  # if we have no children, assume success
 	
 	for child in get_children():

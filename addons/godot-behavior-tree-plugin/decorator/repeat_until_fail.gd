@@ -9,7 +9,6 @@ class_name BehaviorRepeatUntilFail, "repeat_fail_icon.png"
 func tick(tick: Tick) -> int:
 	# 0..1 children
 	for c in get_children():
-		
 		while true:
 			if c._execute(tick) == FAILED:
 				return OK
